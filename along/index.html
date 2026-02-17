@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="我们的爱情故事 - 记录美好时光">
+    <title>我们的爱情故事</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar" id="navbar" role="navigation" aria-label="主导航">
+        <div class="nav-container">
+            <div class="nav-logo" role="button" tabindex="0">❤️ 我们的故事</div>
+            <ul class="nav-menu" role="menubar">
+                <li role="none"><a href="#home" class="nav-link" role="menuitem">首页</a></li>
+                <li role="none"><a href="#gallery" class="nav-link" role="menuitem">相册</a></li>
+                <li role="none"><a href="#timeline" class="nav-link" role="menuitem">时间轴</a></li>
+                <li role="none"><a href="#about" class="nav-link" role="menuitem">关于我们</a></li>
+                <li role="none"><a href="#interactive" class="nav-link" role="menuitem">互动</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="切换菜单" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <section id="home" class="hero-section" aria-label="首页">
+            <div class="hero-bg" id="heroBg" role="img" aria-label="浪漫背景"></div>
+            <div class="hero-content">
+                <div class="couple-avatars">
+                    <div class="avatar-container">
+                        <img src="https://via.placeholder.com/150" alt="头像1" class="avatar" id="avatar1" loading="lazy">
+                        <input type="file" id="avatar1Input" accept="image/*" class="avatar-input" aria-label="上传头像1">
+                        <button class="avatar-edit" onclick="document.getElementById('avatar1Input').click()" aria-label="编辑头像1">✏️</button>
+                    </div>
+                    <div class="heart-icon" aria-hidden="true">❤️</div>
+                    <div class="avatar-container">
+                        <img src="https://via.placeholder.com/150" alt="头像2" class="avatar" id="avatar2" loading="lazy">
+                        <input type="file" id="avatar2Input" accept="image/*" class="avatar-input" aria-label="上传头像2">
+                        <button class="avatar-edit" onclick="document.getElementById('avatar2Input').click()" aria-label="编辑头像2">✏️</button>
+                    </div>
+                </div>
+                <div class="couple-names">
+                    <input type="text" id="name1" class="name-input" placeholder="你的名字" value="" aria-label="你的名字">
+                    <span class="love-symbol" aria-hidden="true">&</span>
+                    <input type="text" id="name2" class="name-input" placeholder="TA的名字" value="" aria-label="TA的名字">
+                </div>
+                <div class="love-date">
+                    <label for="loveDate">恋爱起始日期：</label>
+                    <input type="date" id="loveDate" aria-label="选择恋爱起始日期">
+                </div>
+                <div class="love-counter">
+                    <div class="counter-title">我们已经相爱</div>
+                    <div class="counter-number" id="loveDays" aria-live="polite">0</div>
+                    <div class="counter-unit">天</div>
+                </div>
+                <div class="love-slogan">
+                    <input type="text" id="slogan" class="slogan-input" placeholder="写下你们的爱情宣言..." value="" aria-label="爱情宣言">
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="gallery-section" aria-label="相册">
+            <div class="section-header">
+                <h2 class="section-title">💕 我们的相册</h2>
+                <div class="gallery-controls">
+                    <button class="layout-btn active" data-layout="grid" id="gridBtn" aria-pressed="true">网格</button>
+                    <button class="layout-btn" data-layout="waterfall" id="waterfallBtn" aria-pressed="false">瀑布流</button>
+                    <button class="upload-btn" id="uploadBtn" aria-label="上传照片">📷 上传照片</button>
+                    <input type="file" id="photoInput" accept="image/*" multiple class="photo-input" aria-label="选择照片">
+                </div>
+            </div>
+            <div class="category-filter" role="tablist" aria-label="照片分类">
+                <button class="category-btn active" data-category="all" role="tab" aria-selected="true">全部</button>
+                <button class="category-btn" data-category="daily" role="tab" aria-selected="false">日常</button>
+                <button class="category-btn" data-category="travel" role="tab" aria-selected="false">旅行</button>
+                <button class="category-btn" data-category="anniversary" role="tab" aria-selected="false">纪念日</button>
+                <button class="category-btn" data-category="together" role="tab" aria-selected="false">合照</button>
+                <button class="category-btn" data-category="food" role="tab" aria-selected="false">美食</button>
+            </div>
+            <div class="gallery-container" id="galleryContainer" role="list" aria-label="照片列表"></div>
+        </section>
+
+        <section id="timeline" class="timeline-section" aria-label="时间轴">
+            <div class="section-header">
+                <h2 class="section-title">📅 爱情时间轴</h2>
+                <button class="add-event-btn" id="addEventBtn" aria-label="添加时间节点">➕ 添加节点</button>
+            </div>
+            <div class="timeline-container" id="timelineContainer" role="list" aria-label="时间节点列表"></div>
+        </section>
+
+        <section id="about" class="about-section" aria-label="关于我们">
+            <div class="section-header">
+                <h2 class="section-title">💑 关于我们</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-card">
+                    <h3>👫 我们的故事</h3>
+                    <textarea id="ourStory" class="story-textarea" placeholder="写下你们的相遇故事..." aria-label="我们的故事"></textarea>
+                </div>
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-icon" aria-hidden="true">❤️</div>
+                        <div class="stat-number" id="totalDays" aria-live="polite">0</div>
+                        <div class="stat-label">恋爱天数</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" aria-hidden="true">✈️</div>
+                        <div class="stat-number" id="travelCount" aria-live="polite">0</div>
+                        <div class="stat-label">旅行次数</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" aria-hidden="true">🎉</div>
+                        <div class="stat-number" id="anniversaryCount" aria-live="polite">0</div>
+                        <div class="stat-label">纪念日</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" aria-hidden="true">📸</div>
+                        <div class="stat-number" id="photoCount" aria-live="polite">0</div>
+                        <div class="stat-label">合照数量</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="interactive" class="interactive-section" aria-label="互动空间">
+            <div class="section-header">
+                <h2 class="section-title">💝 互动空间</h2>
+            </div>
+            <div class="interactive-content">
+                <div class="message-board">
+                    <h3>💌 悄悄话留言板</h3>
+                    <div class="message-input">
+                        <textarea id="messageText" placeholder="写下你想对TA说的话..." aria-label="留言内容"></textarea>
+                        <button class="send-btn" id="sendBtn" aria-label="发送留言">发送</button>
+                    </div>
+                    <div class="messages-container" id="messagesContainer" role="list" aria-label="留言列表"></div>
+                </div>
+                <div class="wish-list">
+                    <h3>✨ 共同愿望清单</h3>
+                    <div class="wish-input">
+                        <input type="text" id="wishText" placeholder="添加新的愿望..." aria-label="愿望内容">
+                        <button class="add-wish-btn" id="addWishBtn" aria-label="添加愿望">添加</button>
+                    </div>
+                    <div class="wishes-container" id="wishesContainer" role="list" aria-label="愿望列表"></div>
+                </div>
+                <div class="countdown-section">
+                    <h3>⏰ 纪念日倒计时</h3>
+                    <div class="countdown-container" id="countdownContainer" role="list" aria-label="倒计时列表"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <button class="music-control" id="musicControl" aria-label="播放音乐" aria-pressed="false">
+        <span class="music-icon" aria-hidden="true">🎵</span>
+        <span class="music-text">音乐</span>
+    </button>
+    
+    <div class="music-upload-section" id="musicUploadSection">
+        <input type="file" id="musicInput" accept="audio/*" class="music-input" aria-label="上传音乐">
+        <button class="music-upload-btn" id="musicUploadBtn" aria-label="上传音乐">🎵 上传音乐</button>
+    </div>
+    
+    <audio id="bgMusic" loop preload="auto">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="照片查看器">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose" aria-label="关闭">✕</button>
+            <button class="lightbox-prev" id="lightboxPrev" aria-label="上一张">❮</button>
+            <button class="lightbox-next" id="lightboxNext" aria-label="下一张">❯</button>
+            <img src="" alt="" class="lightbox-img" id="lightboxImg" loading="lazy">
+            <div class="lightbox-info">
+                <p class="lightbox-description" id="lightboxDescription"></p>
+                <p class="lightbox-meta" id="lightboxMeta"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="eventModal" role="dialog" aria-modal="true" aria-labelledby="eventModalTitle">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="eventModalTitle">添加时间节点</h3>
+                <button class="modal-close" id="eventModalClose" aria-label="关闭">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="eventDate">日期</label>
+                    <input type="date" id="eventDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventTitle">标题</label>
+                    <input type="text" id="eventTitle" placeholder="例如：第一次见面" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventDescription">描述</label>
+                    <textarea id="eventDescription" placeholder="详细描述这个特殊时刻..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="eventImage">图片（可选）</label>
+                    <input type="file" id="eventImage" accept="image/*">
+                </div>
+                <button class="submit-btn" id="submitEvent">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="photoModal" role="dialog" aria-modal="true" aria-labelledby="photoModalTitle">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="photoModalTitle">编辑照片</h3>
+                <button class="modal-close" id="photoModalClose" aria-label="关闭">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="photoDescription">描述</label>
+                    <input type="text" id="photoDescription" placeholder="照片描述">
+                </div>
+                <div class="form-group">
+                    <label for="photoDate">拍摄时间</label>
+                    <input type="date" id="photoDate">
+                </div>
+                <div class="form-group">
+                    <label for="photoLocation">地点</label>
+                    <input type="text" id="photoLocation" placeholder="拍摄地点">
+                </div>
+                <div class="form-group">
+                    <label for="photoCategory">分类</label>
+                    <select id="photoCategory">
+                        <option value="daily">日常</option>
+                        <option value="travel">旅行</option>
+                        <option value="anniversary">纪念日</option>
+                        <option value="together">合照</option>
+                        <option value="food">美食</option>
+                    </select>
+                </div>
+                <div class="form-buttons">
+                    <button class="submit-btn" id="savePhoto">保存</button>
+                    <button class="delete-btn" id="deletePhoto">删除</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container" id="toastContainer" role="alert" aria-live="polite" aria-atomic="true"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
